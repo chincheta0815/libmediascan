@@ -5,7 +5,7 @@ use ExtUtils::MakeMaker qw(WriteMakefile);
 use File::Spec::Functions;
 use Getopt::Long;
 
-my (@INC, @LDDLFLAGS, @LIBPATH, @LIBS);
+my (@INC, @LIBPATH, @LIBS);
 my ($FFMPEG, $LMS, $EXIF, $JPEG, $PNG, $GIF, $BDB, $MYEXTLIB);
 
 my ($help, $ffmpeg_inc, $ffmpeg_lib, $lms_inc, $lms_lib, $exif_inc, $exif_lib);

@@ -329,9 +329,6 @@ if ( $^O =~ /sun|solaris/i ) {
     unshift @LIBS, $extralibs;
 }
 
-push @LDDLFLAGS, $Config{lddlflags};
-unshift @LDDLFLAGS, '-Wl,-Bsymbolic';
-
 MAKEFILE:
 
 if ( $^O =~ /Win32/i ) {
@@ -350,7 +347,6 @@ my %opts = (
     ABSTRACT          => 'Library for scanning audio/video/image file metadata',
     AUTHOR            => 'Andy Grundman <andy@hybridized.org>',
     INC               => join(' ', @INC),
-    LDDLFLAGS         => join(' ', @LDDLFLAGS),
     LIBS              => [ join(' ', @LIBPATH, @LIBS) ],
     DEFINE            => $DEFINES,
     MYEXTLIB          => $MYEXTLIB,
@@ -370,7 +366,7 @@ my %opts = (
 );
 
 if ( $^O =~ /Win32/i ) {
-    $opts{LDDLFLAGS} = '-dll -nologo -nodefaultlib -opt:ref,icf  -libpath:"C:\Perl\lib\CORE" -machine:x86 -manifest -ManifestFile:$@.manifest -shared -Wl,-Bsymbolic';
+    $opts{LDDLFLAGS} = '-dll -nologo -nodefaultlib -opt:ref,icf  -libpath:"C:\Perl\lib\CORE" -machine:x86 -manifest -ManifestFile:$@.manifest';
 }
 
 WriteMakefile(%opts);
